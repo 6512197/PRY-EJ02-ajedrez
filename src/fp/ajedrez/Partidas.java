@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.function.Predicate;
@@ -50,6 +51,22 @@ public class Partidas {
 
 	public void agregarPartida(Partida p) {
 		partidas.add(p);
+	}
+	
+	
+	public int hashCode() {
+		return Objects.hash(partidas);
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Partidas other = (Partidas) obj;
+		return Objects.equals(partidas, other.partidas);
 	}
 
 	/**
