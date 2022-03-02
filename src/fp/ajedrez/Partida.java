@@ -8,10 +8,10 @@ import java.util.List;
 import fp.utiles.Checkers;
 
 /**
- * @author reinaqu_2
+ * @author Toñi Reina
  *
  */
-public record Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador ganador, String jugadorBlancas,
+public record Partida(Boolean clasificatoria, TipoVictoria tipoVictoria, Resultado resultado, String jugadorBlancas,
 		String jugadorNegras, Integer ratingBlancas, Integer ratingNegras, List<String> movimientos, String apertura,
 		LocalDate fecha, Duration duracion) implements Comparable<Partida> {
 
@@ -29,8 +29,8 @@ public record Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador g
 
 	/**
 	 * @param clasificatoria Indica si la partida es clasificatoria o amistosa (si el valor es false). 
-	 * @param estadoVictoria Indica el estado al que se ha llegado en la vistoria
-	 * @param ganador Indica si han ganado las blancas, las negras o la partida ha quedado en tabla.
+	 * @param tipoVictoria Indica el estado al que se ha llegado en la vistoria
+	 * @param resultado Indica si han ganado las blancas, las negras o la partida ha quedado en tabla.
 	 * @param jugadorBlancas Identificador del jugador con las blancas
 	 * @param jugadorNegras Identificador del jugador con las negras
 	 * @param ratingBlancas Rating del jugador con las blancas
@@ -44,11 +44,11 @@ public record Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador g
 	 * @throws IllegalArgumentException si el rating de las blancas no es mayor que cero
 	 * @throws IllegalArgumentException si el rating de las negras no es mayor que cero
 	 */
-	public Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador ganador, 
+	public Partida(Boolean clasificatoria, TipoVictoria tipoVictoria, Resultado resultado, 
 			String jugadorBlancas,
 			String jugadorNegras, Integer ratingBlancas, Integer ratingNegras, String movimientos, String apertura,
 			LocalDate fecha, Integer duracion) {
-		this(clasificatoria, estadoVictoria, ganador, jugadorBlancas, jugadorNegras, ratingBlancas, ratingNegras,
+		this(clasificatoria, tipoVictoria, resultado, jugadorBlancas, jugadorNegras, ratingBlancas, ratingNegras,
 				Arrays.asList(movimientos.split(" ")), apertura, fecha, Duration.ofMinutes(duracion));
 	}
 
@@ -73,9 +73,9 @@ public record Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador g
 	 */
 	public String getJugadorGanador() {
 		String res = null;
-		if (ganador.equals(Ganador.BLACK)) {
+		if (resultado.equals(Resultado.BLACK)) {
 			res = jugadorNegras();
-		} else if (ganador.equals(Ganador.WHITE)) {
+		} else if (resultado.equals(Resultado.WHITE)) {
 			res = jugadorBlancas();
 		}
 		return res;
@@ -88,9 +88,9 @@ public record Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador g
 	 */
 	public Integer getRatingGanador() {
 		Integer res = null;
-		if (ganador().equals(Ganador.WHITE)) {
+		if (resultado().equals(Resultado.WHITE)) {
 			res = ratingBlancas();
-		} else if (ganador().equals(Ganador.BLACK)) {
+		} else if (resultado().equals(Resultado.BLACK)) {
 			res = ratingNegras();
 		}
 		return res;
@@ -111,7 +111,7 @@ public record Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador g
 	public String getMovimiento(Integer numMovimiento) {
 		String msg = String.format("El movimiento ha de estar entre 1 y %d.", getNumMovimientos());
 		Checkers.check(msg, numMovimiento > 0 && numMovimiento <= getNumMovimientos());
-		return movimientos().get(numMovimiento);
+		return movimientos().get(numMovimiento-1);
 	}
 
 	/**

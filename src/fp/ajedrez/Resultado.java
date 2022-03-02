@@ -1,5 +1,5 @@
 package fp.ajedrez;
 
-public enum Ganador {
+public enum Resultado {
 	WHITE, BLACK, DRAW
 }

@@ -1,5 +1,5 @@
 package fp.ajedrez;
 
-public enum Victoria {
-	OUTOFTIME, RESIGN, MATE,DRAW
+public enum TipoVictoria {
+	OUTOFTIME, RESIGN, MATE, DRAW
 }

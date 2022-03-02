@@ -4,9 +4,9 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 
-import fp.ajedrez.Ganador;
+import fp.ajedrez.Resultado;
 import fp.ajedrez.Partida;
-import fp.ajedrez.Victoria;
+import fp.ajedrez.TipoVictoria;
 
 public class TestPartida {
 
@@ -21,7 +21,7 @@ public class TestPartida {
 		System.out.println("getDiferenciaRating: "+p.getDiferenciaRating());
 	}
 	
-	public static void testConstructor1(Boolean clasificatoria, Victoria estadoVictoria, Ganador ganador, String jugadorBlancas,
+	public static void testConstructor1(Boolean clasificatoria, TipoVictoria estadoVictoria, Resultado ganador, String jugadorBlancas,
 			String jugadorNegras, Integer ratingBlancas, Integer ratingNegras, List<String> movimientos, String apertura,
 			LocalDate fecha, Duration duracion) {
 		
@@ -38,7 +38,7 @@ public class TestPartida {
 
 	}
 
-	public static void testConstructor2(Boolean clasificatoria, Victoria estadoVictoria, Ganador ganador, String jugadorBlancas,
+	public static void testConstructor2(Boolean clasificatoria, TipoVictoria estadoVictoria, Resultado ganador, String jugadorBlancas,
 			String jugadorNegras, Integer ratingBlancas, Integer ratingNegras, String movimientos, String apertura,
 			LocalDate fecha, Integer duracion) {
 		try {
@@ -73,7 +73,7 @@ public class TestPartida {
 		Integer i= 1;
 		System.out.println("====================================");
 		System.out.println("Constructor 1 - Caso de prueba " + i);
-		testConstructor1(true, Victoria.RESIGN,Ganador.WHITE,"caramiecho72",
+		testConstructor1(true, TipoVictoria.RESIGN,Resultado.WHITE,"caramiecho72",
 				   "gerfsh",1407,1500,movimientos,"Sicilian Defense: Closed Variation",fecha,dur);
 		
 		//Caso de prueba con duración 0
@@ -81,7 +81,7 @@ public class TestPartida {
 		System.out.println("====================================");
 		System.out.println("Constructor 1 - Caso de prueba " + i);
 		dur=Duration.ZERO;
-		testConstructor1(true, Victoria.RESIGN,Ganador.WHITE,"caramiecho72",
+		testConstructor1(true, TipoVictoria.RESIGN,Resultado.WHITE,"caramiecho72",
 				   "gerfsh",1407,1500,movimientos,"Sicilian Defense: Closed Variation",fecha,dur);
 		
 		//Caso de prueba con duración >60
@@ -89,7 +89,7 @@ public class TestPartida {
 		System.out.println("====================================");
 		System.out.println("Constructor 1 - Caso de prueba " + i);
 		dur=Duration.ofMinutes(90);
-		testConstructor1(true, Victoria.RESIGN,Ganador.WHITE,"caramiecho72",
+		testConstructor1(true, TipoVictoria.RESIGN,Resultado.WHITE,"caramiecho72",
 				   "gerfsh",1407,1500,movimientos,"Sicilian Defense: Closed Variation",fecha,dur);
 
 		
@@ -99,7 +99,7 @@ public class TestPartida {
 		System.out.println("Constructor 1 - Caso de prueba " + i);
 		movimientos = List.of("c5","Nc3");
 		dur=Duration.ofMinutes(50);
-		testConstructor1(true, Victoria.RESIGN,Ganador.WHITE,"caramiecho72",
+		testConstructor1(true, TipoVictoria.RESIGN,Resultado.WHITE,"caramiecho72",
 				   "gerfsh",1407,1500,movimientos,"Sicilian Defense: Closed Variation",fecha,dur);
 
 
@@ -110,7 +110,7 @@ public class TestPartida {
 		movimientos = List.of("e4","c5","Nc3");
 		dur=Duration.ofMinutes(50);
 		Integer ratingBlancas = 0;
-		testConstructor1(true, Victoria.RESIGN,Ganador.WHITE,"caramiecho72",
+		testConstructor1(true, TipoVictoria.RESIGN,Resultado.WHITE,"caramiecho72",
 				   "gerfsh",ratingBlancas,1500,movimientos,"Sicilian Defense: Closed Variation",fecha,dur);
 
 
@@ -121,7 +121,7 @@ public class TestPartida {
 		movimientos = List.of("e4","c5","Nc3");
 		dur=Duration.ofMinutes(50);
 		ratingBlancas = -1;
-		testConstructor1(true, Victoria.RESIGN,Ganador.WHITE,"caramiecho72",
+		testConstructor1(true, TipoVictoria.RESIGN,Resultado.WHITE,"caramiecho72",
 				   "gerfsh",ratingBlancas,1500,movimientos,"Sicilian Defense: Closed Variation",fecha,dur);
 
 
@@ -132,7 +132,7 @@ public class TestPartida {
 		movimientos = List.of("e4","c5","Nc3");
 		dur=Duration.ofMinutes(50);
 		Integer ratingNegras = 0;
-		testConstructor1(true, Victoria.RESIGN,Ganador.WHITE,"caramiecho72",
+		testConstructor1(true, TipoVictoria.RESIGN,Resultado.WHITE,"caramiecho72",
 				   "gerfsh",1550,ratingNegras,movimientos,"Sicilian Defense: Closed Variation",fecha,dur);
 
 
@@ -143,21 +143,21 @@ public class TestPartida {
 		movimientos = List.of("e4","c5","Nc3");
 		dur=Duration.ofMinutes(50);
 		ratingNegras = -1;
-		testConstructor1(true, Victoria.RESIGN,Ganador.WHITE,"caramiecho72",
+		testConstructor1(true, TipoVictoria.RESIGN,Resultado.WHITE,"caramiecho72",
 				   "gerfsh",1550,ratingNegras,movimientos,"Sicilian Defense: Closed Variation",fecha,dur);
 
 		i= 1;
 		System.out.println("====================================");
 		String m = "e4 c5 Nc3";
 		System.out.println("Constructor 2 - Caso de prueba " + i);
-		testConstructor2(true, Victoria.RESIGN,Ganador.WHITE,"caramiecho72",
+		testConstructor2(true, TipoVictoria.RESIGN,Resultado.WHITE,"caramiecho72",
 				   "gerfsh",1407,1500,m,"Sicilian Defense: Closed Variation",fecha,15);
 
 		i= 1;
 		System.out.println("====================================");
 		System.out.println("getMovimiento - Caso de prueba " + i);
 		m = "e4 c5 Nc3";
-		Partida p = new Partida(true, Victoria.RESIGN,Ganador.WHITE,"caramiecho72",
+		Partida p = new Partida(true, TipoVictoria.RESIGN,Resultado.WHITE,"caramiecho72",
 				   "gerfsh",1407,1500,m,"Sicilian Defense: Closed Variation",fecha,15);
 		testGetMovimiento(p, 2);
 		
