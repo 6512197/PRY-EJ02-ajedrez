@@ -21,8 +21,8 @@ public record Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador g
 	public Partida {
 		Checkers.check("La duración debe estar entre 1 y 60 " + duracion,
 				duracion.compareTo(Duration.ofMinutes(0)) > 0 && duracion.compareTo(Duration.ofMinutes(60)) <= 0);
-		Checkers.check("El movimiento inicial no es un movimiento de apertura " + getMovimientoApertura(),
-				APERTURAS.contains(getMovimientoApertura()));
+		Checkers.check("El movimiento inicial no es un movimiento de apertura " + movimientos.get(0),
+				APERTURAS.contains(movimientos.get(0)));
 		Checkers.check("El rating de las blancas debe ser mayor que cero " + ratingBlancas, ratingBlancas > 0);
 		Checkers.check("El rating de las negras debe ser mayor que cero " + ratingNegras, ratingNegras > 0);
 	}
@@ -44,7 +44,8 @@ public record Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador g
 	 * @throws IllegalArgumentException si el rating de las blancas no es mayor que cero
 	 * @throws IllegalArgumentException si el rating de las negras no es mayor que cero
 	 */
-	public Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador ganador, String jugadorBlancas,
+	public Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador ganador, 
+			String jugadorBlancas,
 			String jugadorNegras, Integer ratingBlancas, Integer ratingNegras, String movimientos, String apertura,
 			LocalDate fecha, Integer duracion) {
 		this(clasificatoria, estadoVictoria, ganador, jugadorBlancas, jugadorNegras, ratingBlancas, ratingNegras,
@@ -72,9 +73,9 @@ public record Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador g
 	 */
 	public String getJugadorGanador() {
 		String res = null;
-		if (ganador.equals(Ganador.NEGRAS)) {
+		if (ganador.equals(Ganador.BLACK)) {
 			res = jugadorNegras();
-		} else if (ganador.equals(Ganador.BLANCAS)) {
+		} else if (ganador.equals(Ganador.WHITE)) {
 			res = jugadorBlancas();
 		}
 		return res;
@@ -87,9 +88,9 @@ public record Partida(Boolean clasificatoria, Victoria estadoVictoria, Ganador g
 	 */
 	public Integer getRatingGanador() {
 		Integer res = null;
-		if (ganador().equals(Ganador.BLANCAS)) {
+		if (ganador().equals(Ganador.WHITE)) {
 			res = ratingBlancas();
-		} else if (ganador().equals(Ganador.NEGRAS)) {
+		} else if (ganador().equals(Ganador.BLACK)) {
 			res = ratingNegras();
 		}
 		return res;
