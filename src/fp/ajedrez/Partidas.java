@@ -223,6 +223,7 @@ public class Partidas {
 	
 	
 	/**
+	 * FUNCIÓN TIPO 13
 	 * @param n Número entero n
 	 * @return Un map en el que las claves son los tipos de victoria y el valor
 	 * es el enésimo jugador con más rating entre los jugadores que han tenido
