@@ -22,7 +22,7 @@ public class FactoriaPartidas {
 					.map(FactoriaPartidas::parsearPartida)
 					.collect(Collectors.toList());
 			
-			res=new Partidas(partidas);
+			res=new PartidasImpl(partidas);
 			} catch(IOException e) {
 			System.out.println("Fichero no encontrado: "+nomfich);
 			e.printStackTrace();
