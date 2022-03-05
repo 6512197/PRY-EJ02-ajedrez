@@ -1,7 +1,7 @@
 # Proyecto del Segundo Cuatrimestre Fundamentos de Programación (Curso 2021/22)
 Autor/a: Toñi Reina   uvus:reinaqu
 
-Este proyecto es una adaptación del proyecto presentado por el estudiante Pablo Diego Acosta, en el curso 2019/20.
+Este proyecto es una adaptación del proyecto presentado por el estudiante Pablo Diego Acosta, en el curso 2021/22.
 
 ## Estructura de las carpetas del proyecto
 
