@@ -12,7 +12,16 @@ import java.util.stream.Collectors;
 import fp.utiles.Checkers;
 
 
+/**
+ * @author Toñi Reina
+ *
+ */
 public class FactoriaPartidas {
+	
+	/**
+	 * @param nomfich Nombre del fichero con datos de partidas.
+	 * Devuelve un objeto de tipo Partidas con los datos del fichero.
+	 */
 	public static Partidas leerPartidas(String nomfich) {
 		Partidas res=null;
 		int i=0;

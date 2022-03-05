@@ -1,100 +1,123 @@
-# Proyecto del Segundo Cuatrimestre Fundamentos de Programaci√≥n (Curso  \<XX\>/\<YY\>)
-Autor/a: \<nombre del autor\>   uvus:\<uvus del autor\>
+# Proyecto del Segundo Cuatrimestre Fundamentos de ProgramaciÛn (Curso 2021/22)
+Autor/a: ToÒi Reina   uvus:reinaqu
 
-Aqu√≠ debes a√±adir la descripci√≥n del dataset y un enunciado del dominio del proyecto.
-
+Este proyecto es una adaptaciÛn del proyecto presentado por el estudiante Pablo Diego Acosta, en el curso 2019/20.
 
 ## Estructura de las carpetas del proyecto
 
-* **/src**: Contiene los diferentes archivos que forman parte del proyecto. Debe estar estructurado en los siguentes paquetes
-  * **fp.\<dominio\>**: Paquete que contiene los tipos del proyecto.
-  * **fp.\<dominio\>.test**: Paquete que contiene las clases de test del proyecto.
-  * **fp.common**: Paquete que contiene los tipos auxiliares del proyecto
+* **/src**: Directorio con el cÛdigo fuente.
+  * **fp.ajedrez**: Paquete que contiene los tipos del proyecto.
+  * **fp.ajedrez.test**: Paquete que contiene las clases de test del proyecto.
   * **fp.utiles**:  Paquete que contiene las clases de utilidad. 
-* **/data**: Contiene el dataset o datasets del proyecto
-    * **\<dataset1.csv\>**: A√±ade una descripci√≥n gen√©rica del dataset.
-    * **\<dataset2.csv\>**: A√±ade una descripci√≥n del resto de datasets que puedas tener.
+* **/data**: Contiene el dataset del proyecto.
+    * **chess.csv**: Archivo csv que contiene datos de diferentes partidas de ajedrez.
     
 ## Estructura del *dataset*
 
-Aqu√≠ debes describir la estructura del dataset explicando qu√© representan los datos que contiene y la descripci√≥n de cada una de las columnas. Incluye tambi√©n la URL del dataset original.
+El dataset original Chess Game Dataset se puede obtener de la URL [https://www.kaggle.com/datasnaek/chess](https://www.kaggle.com/datasnaek/chess). Originalmente tiene 16 columnas y cada fila contiene datos sobre una partida de ajedrez jugada en la plataforma lichess.com. El dataset usado en este proyecto tiene 11 columna, 9 se han tomado del dataset original, y dos, la fecha y la duraciÛn de las partidas, se han generado de forma aleatoria. A continuaciÛn se describen las 11 columnas del dataset:
 
-El dataset est√° compuesto por \<N\> columnas, con la siguiente descripci√≥n:
-
-* **\<columna 1>**: de tipo \<tipo\>, representa....
-* **\<columna 2>**: de tipo \<tipo\>, representa....
-....
+* **rated**: de tipo booleano,  indica si las partidas han sido calificadas o no, es decir si
+son partidas amistosas o de tipo clasificatorio.
+* **victory_status**: de tipo cadena, indica el tipo de victoria. Puede tomar los valores: outoftime, resign, mate or draw.
+* **winner**: de tipo cadena, indica el resultado de la partida. Puede tomar los valores: white, black o draw, para indicar si ganan las blancas, las negras, o hay tablas.
+* **white_id**: de tipo cadena, contiene el identificador del jugador de blancas.
+* **white_rating**: de tipo entero, tiene el valor ELO del jugador de blancas. El valor ELO es un n˙mero que se usa en lichess.com para hacer un ranking de los jugadores.
+* **black_id**: de tipo cadena, contiene el identificador del jugador de negras.
+* **black_rating**: de tipo entero, tiene el valor ELO del jugador de negras. 
+* **moves**: de tipo cadena, contiene una secuencia con los movimientos de la partida. Los movimientos est·n separados por espacios en blanco. Por ejemplo, ```d4 d5 c4 c6 cxd5 e6 dxe6 fxe6 Nf3 Bb4+ Nc3 Ba5 Bf4```.
+* **opening_name**: de tipo cadena, indica la salida y la defensa de la partida. Esto no se
+corresponde con el primer o segundo movimiento, sino que son las salidas y sus distintas variantes, por ejemplo, ```Queen's Pawn Game: Mason Attack```.
+* **fecha**: de tipo fecha. Indica la fecha en la que se jugÛ la partida.
+* **duracion**: de tipo entero. Indica la duraciÛn en minutos de la partida.
 
 ## Tipos implementados
 
-Describe aqu√≠ los tipos que usas en tu proyecto.
+Los tipos que se han implementado en el proyecto son los siguientes:
 
-### Tipo Base
-Descripci√≥n breve del tipo base.
-
+### Tipo Base - Partida
+Representa una partida de ajedrez concreta.
 **Propiedades**:
 
-- _propiedad1_, de tipo \<Tipo1\>, consultable. 
-- _propiedad2_, de tipo \<Tipo2\>, consultable y modificable. 
-- ...
-- 
+- _clasificatoria_, de tipo _Boolean_, consultable. Indica si las partidas han sido calificadas o no, es decir si son partidas amistosas o de tipo clasificatorio. 
+- _tipoVictoria_, de tipo _TipoVictoria_, consultable. Indica el tipo de victoria. Puede tomar los valores OUTOFTIME, RESIGN, MATE, DRAW.
+- _resultado_, de tipo _Resultado_, consultable. Indica el resultado de la partida. Puede tomar los valores WHITE, BLACK, DRAW.
+- _jugadorBlancas_, de tipo _String_, consultable. Contiene el identificador del jugador de blancas.
+- _jugadorNegras_, de tipo _String_, consultable. Contiene el identificador del jugador de negras.
+- _ratingBlancas_, de tipo _Integer_, consultable. Contiene el rating del jugador de blancas.
+- _ratingNegras_, de tipo _Integer_, consultable. Contiene el rating del jugador de negras.
+- _movimientos_, de tipo _List\<String\>_, consultable. Lista de movimientos de la partida.
+- _apertura_, de tipo _String_, consultable. Tipo de apertura usado en la partida.
+- _apertura_, de tipo _String_, consultable. Tipo de apertura usado en la partida.
+- _movimientoApertura_, de tipo _String_, consultable. Es el primer movimiento de la partida y, por lo tanto, se obtiene a partir del primer elemento de la lista de movimientos.
+- _numMovimientos_, de tipo _Integer_, consultable. N˙mero de movimientos que se han realizado en la partida. Se calcula a partir del n˙mero de elementos de la lista de movimientos.
+- _jugadorGanador_, de tipo _String_, consultable. Contiene el id del jugador que gana la partida, o ```null```, si la partida ha quedado en tablas.
+- _ratingGanador_, de tipo _Integer_, consultable. Contiene el rating del jugador que gana la partida, o ```null```, si la partida ha quedado en tablas.
+- _diferenciaRatings_, de tipo _Integer_, consultable. Contiene la diferencia de ratings entre los dos jugadores de la partida (en valor absoluto).
+
+
 **Constructores**: 
 
-- C1: Descripci√≥n del constructor 1.
-- C2: Descripci√≥n del constructor 2.
-- ...
-
-**Restricciones**:
+- C1: Tiene un par·metro por cada propiedad b·sica del tipo.
+- C2: Crea un objeto de tipo ```Partida``` a partir de los siguientes par·metros: ```Boolean clasificatoria, TipoVictoria tipoVictoria, Resultado resultado, String jugadorBlancas, String jugadorNegras, Integer ratingBlancas, Integer ratingNegras, String movimientos, String apertura, LocalDate fecha, Integer duracion```.
+-
+***Restricciones**:
  
-- R1: Descripci√≥n de la restricci√≥n 1.
-- R2: Descripci√≥n de la restricci√≥n 2.
-- ...
-- 
-**Criterio de igualdad**: Describir el criterio de igualdad
+- R1: La duraciÛn debe estar entre 1 y 60.
+- R2: El movimiento inicial debe ser uno de los movimientos siguientes: h3, h4, g3, g4, f3, f4, e3, e4, d3, d4, c3, c4, b3, b4, a3, a4, Nh3, Nf3, Nc3, Na3.
+- R3: El rating de las blancas debe ser mayor que cero.
+-- R4: El rating de las negras debe ser mayor que cero.
+***Criterio de igualdad**: Dos partidas son iguales si todas sus propiedades b·sicas son iguales.
 
-**Criterio de ordenaci√≥n**: Describir el criterio de ordenaci√≥n (si lo hay).
+**Criterio de ordenaciÛn**: Por fecha, duraciÛn y n˙mero de movimientos.
 
-**Otras operaciones**:
- 
--	_m√©todo 1_: Descripci√≥n del m√©todo 1.
-- ...
+***Otras operaciones**:
+-- _String getMovimiento(Integer numMovimiento)_: Devuelve el movimiento dado por el n˙mero numMovimiento. Eleva ```IllegalArgumentException``` si ```numMovimiento``` no est· en el intervalo [1, getNumMovimientos()]
 
 #### Tipos auxiliares
-Descripci√≥n de los tipos auxiliares que sean necesarios a√±adir al proyecto.
+-
+- TipoVictoria, enumerado. Puede tomar los valores OUTOFTIME, RESIGN, MATE, DRAW.
+- Resultado, enumerado. Puede tomar los valores WHITE, BLACK, DRAW.
 
-### Factor√≠a
-Descripci√≥n breve de la factor√≠a.
+### FactorÌa - FactoriaPartidas
+DClase de factorÌa para construir objetos de tipo Partidas.
+-- _Partidas leerPartidas(String nomfich)_:Crea un objeto de tipo Partidas a partir de la informaciÛn recogida en el archivo csv, cuya ruta se da como par·metro.
 
-- _m√©todo 1_: Descripci√≥n del m√©todo 1.
--	_m√©todo 2_: Descripci√≥n del m√©todo 2.
 
-### Tipo Contenedor
 
-Descripci√≥n breve del tipo contenedor.
+### Tipo Contenedor - Partidas
 
-**Propiedades**:
+Clase contenedora de los objetos de tipo Partida.
+D
 
-- _propiedad1_, de tipo \<Tipo1\>, consultable. 
-- _propiedad2_, de tipo \<Tipo2\>, consultable y modificable. 
-- ...
+***Propiedades**:
+
+-  _partidas_, de tipo _List\<Partida\>_, consultable. Lista de partidas de ajedrez 
+-  _numero partidas_, de tipo _Integer_, consultable. N˙mero de partidas del contenedor. 
+
+-
 - 
-**Constructores**: 
+***Constructores**: 
 
-- C1: Descripci√≥n del constructor 1.
-- C2: Descripci√≥n del constructor 2.
-- ...
+- C1: Constructor por defecto. Creal un objeto de tipo Partidas sin ninguna partida almacenada.
+- C2: Constructor con un par·metro de tipo Collection\<Partida\>. Crea un objeto de tipo Partidas con las partidas incluidas en la colecciÛn dada como par·metro.
 
-**Restricciones**:
- 
-- R1: Descripci√≥n de la restricci√≥n 1.
-- R2: Descripci√≥n de la restricci√≥n 2.
-- ...
-- 
-**Criterio de igualdad**: Describir el criterio de igualdad
+- C3: Constructor con un par·metro de tipo Stream\<Partida\>. Crea un objeto de tipo Partidas con las partidas incluidas en el Stream dado 
+*
+**Criterio de igualdad**: Dos partidas son iguales si lo son sus propiedades partidas.
 
-**Criterio de ordenaci√≥n**: Describir el criterio de ordenaci√≥n (si lo hay).
 
 **Otras operaciones**:
- 
--	_m√©todo 1_: Descripci√≥n del m√©todo 1.
-- ...
+-- _void agregarPartida(Partida p)_: AÒade una partida de ajedrez al objeto.
+
+- _Double getPromedioDuracionesMedias(TipoVictoria vic)_: Devuelve la media de la duraciÛn media(en segundos) por turno de las partidas. Si la media no se puede calcular, devuelve cero.
+- _Map<String, Double> getPorcentajesSiguienteMovimiento(String movimiento, Integer numeroMovimiento)_: Devuelve un Map en el que las claves son movimientos siguientes al dado como par·metro (seg˙n el movimiento y la posiciÛn en la que se hace), y los valores el porcentaje de veces que se ha hecho ese movimiento. Por ejemplo,     si el movimiento es "Nc6" y el n˙mero de movimiento es el 6, el Map contiene como claves los movimientos hechos en sÈptimo lugar tras un movimiento "Nc6". Los valores ser·n el porcentaje de veces que se han hecho esos movimientos. Eleva ```IllegalArgumentException```si numeroMovimiento no es mayor o igual que uno.
+- _Double getPorcentajeVictoriasDeApertura(String apertura, Resultado resultado)_: Devuelve el porcentaje de partidas que incluyen la cadena de apertura en su apertura y cuyo resultado es el dado como par·metro.
+- _SortedSet<Partida> getNPartidasMasCortas(Integer anyo, Integer n)_: Devuelve un conjunto ordenado con las n partidas m·s cortas jugadas en el aÒo dado como par·metro. El conjunto estar· ordenado por el n˙mero de movimientos de la partida.
+- _List<String> getNMejoresJugadores(Integer anyo, Integer n)_: Devuelve una lista con los ids de los n jugadores con m·s victorias en el aÒo dado como par·metro.
+- _Long getTiempoTotalJuego(String idJugador)_: Devuelve el total de minutos jugados por el jugador dado como par·metro.
+- _String getJugadorMasVictorias(Integer anyo, Resultado resultado)_:
+Devuelve true si hay alg˙n jugador que tenga m·s de n victorias.
+- _Map<TipoVictoria, String> getGanadorNPorTipoVictoria(Integer n)_:
+Devuelve un map en el que las claves son los tipos de victoria y el valor es el enÈsimo jugador con m·s rating entre los jugadores que han tenido victorias de ese tipo. Es decir, si hacemos un ranking de los jugadores seg˙n su rating, nos quedarÌamos con el que est· en la posiciÛn n.
+
+

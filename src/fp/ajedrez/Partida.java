@@ -105,7 +105,7 @@ public record Partida(Boolean clasificatoria, TipoVictoria tipoVictoria, Resulta
 
 	/**
 	 * @param numMovimiento El número de movimiento.
-	 * @return El movimiento dado por el número numMovmiento.
+	 * @return El movimiento dado por el número numMovimiento.
 	 * @throws IllegalArgumentException si numMovimiento no está en el intervalo [1, getNumMovimientos()]
 	 */
 	public String getMovimiento(Integer numMovimiento) {

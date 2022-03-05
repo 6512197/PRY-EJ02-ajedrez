@@ -6,8 +6,15 @@ import java.util.SortedSet;
 
 public interface Partidas {
 
+	/**
+	 * @return El número de partidas almacenado en el objeto Partida.
+	 */
 	Integer getNumeroPartidas();
 
+	/**
+	 * @param p partida de ajedrez
+	 * Añade una partida de ajedrez al objeto-
+	 */
 	void agregarPartida(Partida p);
 
 	/**
@@ -56,12 +63,12 @@ public interface Partidas {
 	 * FUNCIÓN TIPO ??
 	 * @param anyo Año
 	 * @param n Número entero
-	 * @return Una lista con los ids de los n jugadores con más victorias en al año dado como parámetro.
+	 * @return Una lista con los ids de los n jugadores con más victorias en el año dado como parámetro.
 	 */
 	List<String> getNMejoresJugadores(Integer anyo, Integer n);
 
 	/**
-	 * FUNCIÓN TIPO 7
+	 * FUNCIÓN TIPO 7/TIPO 2
 	 * @param idJugador Identificador de un jugador
 	 * @return El total de minutos jugados por el jugador dado como parámetro.
 	 */

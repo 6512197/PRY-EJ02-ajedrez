@@ -1,15 +1,13 @@
 package fp.ajedrez.test;
 
-import fp.ajedrez.Partidas;
 import fp.ajedrez.Resultado;
 import fp.ajedrez.TipoVictoria;
-
-import java.awt.Color;
 import java.util.Map;
 import java.util.SortedSet;
 
 import fp.ajedrez.FactoriaPartidas;
 import fp.ajedrez.Partida;
+import fp.ajedrez.Partidas;
 
 public class TestPartidas {
 
