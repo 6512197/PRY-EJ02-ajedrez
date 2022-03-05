@@ -1,11 +1,11 @@
-# Proyecto del Segundo Cuatrimestre Fundamentos de ProgramaciÛn (Curso 2021/22)
-Autor/a: ToÒi Reina   uvus:reinaqu
+# Proyecto del Segundo Cuatrimestre Fundamentos de Programaci√≥n (Curso 2021/22)
+Autor/a: To√±i Reina   uvus:reinaqu
 
-Este proyecto es una adaptaciÛn del proyecto presentado por el estudiante Pablo Diego Acosta, en el curso 2019/20.
+Este proyecto es una adaptaci√≥n del proyecto presentado por el estudiante Pablo Diego Acosta, en el curso 2019/20.
 
 ## Estructura de las carpetas del proyecto
 
-* **/src**: Directorio con el cÛdigo fuente.
+* **/src**: Directorio con el c√≥digo fuente.
   * **fp.ajedrez**: Paquete que contiene los tipos del proyecto.
   * **fp.ajedrez.test**: Paquete que contiene las clases de test del proyecto.
   * **fp.utiles**:  Paquete que contiene las clases de utilidad. 
@@ -14,21 +14,21 @@ Este proyecto es una adaptaciÛn del proyecto presentado por el estudiante Pablo 
     
 ## Estructura del *dataset*
 
-El dataset original Chess Game Dataset se puede obtener de la URL [https://www.kaggle.com/datasnaek/chess](https://www.kaggle.com/datasnaek/chess). Originalmente tiene 16 columnas y cada fila contiene datos sobre una partida de ajedrez jugada en la plataforma lichess.com. El dataset usado en este proyecto tiene 11 columna, 9 se han tomado del dataset original, y dos, la fecha y la duraciÛn de las partidas, se han generado de forma aleatoria. A continuaciÛn se describen las 11 columnas del dataset:
+El dataset original Chess Game Dataset se puede obtener de la URL [https://www.kaggle.com/datasnaek/chess](https://www.kaggle.com/datasnaek/chess). Originalmente tiene 16 columnas y cada fila contiene datos sobre una partida de ajedrez jugada en la plataforma lichess.com. El dataset usado en este proyecto tiene 11 columna, 9 se han tomado del dataset original, y dos, la fecha y la duraci√≥n de las partidas, se han generado de forma aleatoria. A continuaci√≥n se describen las 11 columnas del dataset:
 
 * **rated**: de tipo booleano,  indica si las partidas han sido calificadas o no, es decir si
 son partidas amistosas o de tipo clasificatorio.
 * **victory_status**: de tipo cadena, indica el tipo de victoria. Puede tomar los valores: outoftime, resign, mate or draw.
 * **winner**: de tipo cadena, indica el resultado de la partida. Puede tomar los valores: white, black o draw, para indicar si ganan las blancas, las negras, o hay tablas.
 * **white_id**: de tipo cadena, contiene el identificador del jugador de blancas.
-* **white_rating**: de tipo entero, tiene el valor ELO del jugador de blancas. El valor ELO es un n˙mero que se usa en lichess.com para hacer un ranking de los jugadores.
+* **white_rating**: de tipo entero, tiene el valor ELO del jugador de blancas. El valor ELO es un n√∫mero que se usa en lichess.com para hacer un ranking de los jugadores.
 * **black_id**: de tipo cadena, contiene el identificador del jugador de negras.
 * **black_rating**: de tipo entero, tiene el valor ELO del jugador de negras. 
-* **moves**: de tipo cadena, contiene una secuencia con los movimientos de la partida. Los movimientos est·n separados por espacios en blanco. Por ejemplo, ```d4 d5 c4 c6 cxd5 e6 dxe6 fxe6 Nf3 Bb4+ Nc3 Ba5 Bf4```.
+* **moves**: de tipo cadena, contiene una secuencia con los movimientos de la partida. Los movimientos est√°n separados por espacios en blanco. Por ejemplo, ```d4 d5 c4 c6 cxd5 e6 dxe6 fxe6 Nf3 Bb4+ Nc3 Ba5 Bf4```.
 * **opening_name**: de tipo cadena, indica la salida y la defensa de la partida. Esto no se
 corresponde con el primer o segundo movimiento, sino que son las salidas y sus distintas variantes, por ejemplo, ```Queen's Pawn Game: Mason Attack```.
-* **fecha**: de tipo fecha. Indica la fecha en la que se jugÛ la partida.
-* **duracion**: de tipo entero. Indica la duraciÛn en minutos de la partida.
+* **fecha**: de tipo fecha. Indica la fecha en la que se jug√≥ la partida.
+* **duracion**: de tipo entero. Indica la duraci√≥n en minutos de la partida.
 
 ## Tipos implementados
 
@@ -49,7 +49,7 @@ Representa una partida de ajedrez concreta.
 - _apertura_, de tipo _String_, consultable. Tipo de apertura usado en la partida.
 - _apertura_, de tipo _String_, consultable. Tipo de apertura usado en la partida.
 - _movimientoApertura_, de tipo _String_, consultable. Es el primer movimiento de la partida y, por lo tanto, se obtiene a partir del primer elemento de la lista de movimientos.
-- _numMovimientos_, de tipo _Integer_, consultable. N˙mero de movimientos que se han realizado en la partida. Se calcula a partir del n˙mero de elementos de la lista de movimientos.
+- _numMovimientos_, de tipo _Integer_, consultable. N√∫mero de movimientos que se han realizado en la partida. Se calcula a partir del n√∫mero de elementos de la lista de movimientos.
 - _jugadorGanador_, de tipo _String_, consultable. Contiene el id del jugador que gana la partida, o ```null```, si la partida ha quedado en tablas.
 - _ratingGanador_, de tipo _Integer_, consultable. Contiene el rating del jugador que gana la partida, o ```null```, si la partida ha quedado en tablas.
 - _diferenciaRatings_, de tipo _Integer_, consultable. Contiene la diferencia de ratings entre los dos jugadores de la partida (en valor absoluto).
@@ -57,30 +57,30 @@ Representa una partida de ajedrez concreta.
 
 **Constructores**: 
 
-- C1: Tiene un par·metro por cada propiedad b·sica del tipo.
-- C2: Crea un objeto de tipo ```Partida``` a partir de los siguientes par·metros: ```Boolean clasificatoria, TipoVictoria tipoVictoria, Resultado resultado, String jugadorBlancas, String jugadorNegras, Integer ratingBlancas, Integer ratingNegras, String movimientos, String apertura, LocalDate fecha, Integer duracion```.
--
+- C1: Tiene un par√°metro por cada propiedad b√°sica del tipo.
+- C2: Crea un objeto de tipo ```Partida``` a partir de los siguientes par√°metros: ```Boolean clasificatoria, TipoVictoria tipoVictoria, Resultado resultado, String jugadorBlancas, String jugadorNegras, Integer ratingBlancas, Integer ratingNegras, String movimientos, String apertura, LocalDate fecha, Integer duracion```.
+
 ***Restricciones**:
  
-- R1: La duraciÛn debe estar entre 1 y 60.
+- R1: La duraci√≥n debe estar entre 1 y 60.
 - R2: El movimiento inicial debe ser uno de los movimientos siguientes: h3, h4, g3, g4, f3, f4, e3, e4, d3, d4, c3, c4, b3, b4, a3, a4, Nh3, Nf3, Nc3, Na3.
 - R3: El rating de las blancas debe ser mayor que cero.
--- R4: El rating de las negras debe ser mayor que cero.
-***Criterio de igualdad**: Dos partidas son iguales si todas sus propiedades b·sicas son iguales.
+- R4: El rating de las negras debe ser mayor que cero.
+***Criterio de igualdad**: Dos partidas son iguales si todas sus propiedades b√°sicas son iguales.
 
-**Criterio de ordenaciÛn**: Por fecha, duraciÛn y n˙mero de movimientos.
+**Criterio de ordenaci√≥n**: Por fecha, duraci√≥n y n√∫mero de movimientos.
 
 ***Otras operaciones**:
--- _String getMovimiento(Integer numMovimiento)_: Devuelve el movimiento dado por el n˙mero numMovimiento. Eleva ```IllegalArgumentException``` si ```numMovimiento``` no est· en el intervalo [1, getNumMovimientos()]
+-- _String getMovimiento(Integer numMovimiento)_: Devuelve el movimiento dado por el n√∫mero numMovimiento. Eleva ```IllegalArgumentException``` si ```numMovimiento``` no est√° en el intervalo [1, getNumMovimientos()]
 
 #### Tipos auxiliares
 -
 - TipoVictoria, enumerado. Puede tomar los valores OUTOFTIME, RESIGN, MATE, DRAW.
 - Resultado, enumerado. Puede tomar los valores WHITE, BLACK, DRAW.
 
-### FactorÌa - FactoriaPartidas
-DClase de factorÌa para construir objetos de tipo Partidas.
--- _Partidas leerPartidas(String nomfich)_:Crea un objeto de tipo Partidas a partir de la informaciÛn recogida en el archivo csv, cuya ruta se da como par·metro.
+### Factor√≠a - FactoriaPartidas
+DClase de factor√≠a para construir objetos de tipo Partidas.
+-- _Partidas leerPartidas(String nomfich)_:Crea un objeto de tipo Partidas a partir de la informaci√≥n recogida en el archivo csv, cuya ruta se da como par√°metro.
 
 
 
@@ -92,32 +92,32 @@ D
 ***Propiedades**:
 
 -  _partidas_, de tipo _List\<Partida\>_, consultable. Lista de partidas de ajedrez 
--  _numero partidas_, de tipo _Integer_, consultable. N˙mero de partidas del contenedor. 
+-  _numero partidas_, de tipo _Integer_, consultable. N√∫mero de partidas del contenedor. 
 
 -
 - 
 ***Constructores**: 
 
 - C1: Constructor por defecto. Creal un objeto de tipo Partidas sin ninguna partida almacenada.
-- C2: Constructor con un par·metro de tipo Collection\<Partida\>. Crea un objeto de tipo Partidas con las partidas incluidas en la colecciÛn dada como par·metro.
+- C2: Constructor con un par√°metro de tipo Collection\<Partida\>. Crea un objeto de tipo Partidas con las partidas incluidas en la colecci√≥n dada como par√°metro.
 
-- C3: Constructor con un par·metro de tipo Stream\<Partida\>. Crea un objeto de tipo Partidas con las partidas incluidas en el Stream dado 
+- C3: Constructor con un par√°metro de tipo Stream\<Partida\>. Crea un objeto de tipo Partidas con las partidas incluidas en el Stream dado 
 *
 **Criterio de igualdad**: Dos partidas son iguales si lo son sus propiedades partidas.
 
 
 **Otras operaciones**:
--- _void agregarPartida(Partida p)_: AÒade una partida de ajedrez al objeto.
+-- _void agregarPartida(Partida p)_: A√±ade una partida de ajedrez al objeto.
 
-- _Double getPromedioDuracionesMedias(TipoVictoria vic)_: Devuelve la media de la duraciÛn media(en segundos) por turno de las partidas. Si la media no se puede calcular, devuelve cero.
-- _Map<String, Double> getPorcentajesSiguienteMovimiento(String movimiento, Integer numeroMovimiento)_: Devuelve un Map en el que las claves son movimientos siguientes al dado como par·metro (seg˙n el movimiento y la posiciÛn en la que se hace), y los valores el porcentaje de veces que se ha hecho ese movimiento. Por ejemplo,     si el movimiento es "Nc6" y el n˙mero de movimiento es el 6, el Map contiene como claves los movimientos hechos en sÈptimo lugar tras un movimiento "Nc6". Los valores ser·n el porcentaje de veces que se han hecho esos movimientos. Eleva ```IllegalArgumentException```si numeroMovimiento no es mayor o igual que uno.
-- _Double getPorcentajeVictoriasDeApertura(String apertura, Resultado resultado)_: Devuelve el porcentaje de partidas que incluyen la cadena de apertura en su apertura y cuyo resultado es el dado como par·metro.
-- _SortedSet<Partida> getNPartidasMasCortas(Integer anyo, Integer n)_: Devuelve un conjunto ordenado con las n partidas m·s cortas jugadas en el aÒo dado como par·metro. El conjunto estar· ordenado por el n˙mero de movimientos de la partida.
-- _List<String> getNMejoresJugadores(Integer anyo, Integer n)_: Devuelve una lista con los ids de los n jugadores con m·s victorias en el aÒo dado como par·metro.
-- _Long getTiempoTotalJuego(String idJugador)_: Devuelve el total de minutos jugados por el jugador dado como par·metro.
+- _Double getPromedioDuracionesMedias(TipoVictoria vic)_: Devuelve la media de la duraci√≥n media(en segundos) por turno de las partidas. Si la media no se puede calcular, devuelve cero.
+- _Map<String, Double> getPorcentajesSiguienteMovimiento(String movimiento, Integer numeroMovimiento)_: Devuelve un Map en el que las claves son movimientos siguientes al dado como par√°metro (seg√∫n el movimiento y la posici√≥n en la que se hace), y los valores el porcentaje de veces que se ha hecho ese movimiento. Por ejemplo,     si el movimiento es "Nc6" y el n√∫mero de movimiento es el 6, el Map contiene como claves los movimientos hechos en s√©ptimo lugar tras un movimiento "Nc6". Los valores ser√°n el porcentaje de veces que se han hecho esos movimientos. Eleva ```IllegalArgumentException```si numeroMovimiento no es mayor o igual que uno.
+- _Double getPorcentajeVictoriasDeApertura(String apertura, Resultado resultado)_: Devuelve el porcentaje de partidas que incluyen la cadena de apertura en su apertura y cuyo resultado es el dado como par√°metro.
+- _SortedSet<Partida> getNPartidasMasCortas(Integer anyo, Integer n)_: Devuelve un conjunto ordenado con las n partidas m√°s cortas jugadas en el a√±o dado como par√°metro. El conjunto estar√° ordenado por el n√∫mero de movimientos de la partida.
+- _List<String> getNMejoresJugadores(Integer anyo, Integer n)_: Devuelve una lista con los ids de los n jugadores con m√°s victorias en el a√±o dado como par√°metro.
+- _Long getTiempoTotalJuego(String idJugador)_: Devuelve el total de minutos jugados por el jugador dado como par√°metro.
 - _String getJugadorMasVictorias(Integer anyo, Resultado resultado)_:
-Devuelve true si hay alg˙n jugador que tenga m·s de n victorias.
+Devuelve true si hay alg√∫n jugador que tenga m√°s de n victorias.
 - _Map<TipoVictoria, String> getGanadorNPorTipoVictoria(Integer n)_:
-Devuelve un map en el que las claves son los tipos de victoria y el valor es el enÈsimo jugador con m·s rating entre los jugadores que han tenido victorias de ese tipo. Es decir, si hacemos un ranking de los jugadores seg˙n su rating, nos quedarÌamos con el que est· en la posiciÛn n.
+Devuelve un map en el que las claves son los tipos de victoria y el valor es el en√©simo jugador con m√°s rating entre los jugadores que han tenido victorias de ese tipo. Es decir, si hacemos un ranking de los jugadores seg√∫n su rating, nos quedar√≠amos con el que est√° en la posici√≥n n.
 
 
