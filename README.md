@@ -60,7 +60,7 @@ Representa una partida de ajedrez concreta.
 - C1: Tiene un parámetro por cada propiedad básica del tipo.
 - C2: Crea un objeto de tipo ```Partida``` a partir de los siguientes parámetros: ```Boolean clasificatoria, TipoVictoria tipoVictoria, Resultado resultado, String jugadorBlancas, String jugadorNegras, Integer ratingBlancas, Integer ratingNegras, String movimientos, String apertura, LocalDate fecha, Integer duracion```.
 
-***Restricciones**:
+**Restricciones**:
  
 - R1: La duración debe estar entre 1 y 60.
 - R2: El movimiento inicial debe ser uno de los movimientos siguientes: h3, h4, g3, g4, f3, f4, e3, e4, d3, d4, c3, c4, b3, b4, a3, a4, Nh3, Nf3, Nc3, Na3.
@@ -70,45 +70,41 @@ Representa una partida de ajedrez concreta.
 
 **Criterio de ordenación**: Por fecha, duración y número de movimientos.
 
-***Otras operaciones**:
--- _String getMovimiento(Integer numMovimiento)_: Devuelve el movimiento dado por el número numMovimiento. Eleva ```IllegalArgumentException``` si ```numMovimiento``` no está en el intervalo [1, getNumMovimientos()]
+**Otras operaciones**:
+
+- _String getMovimiento(Integer numMovimiento)_: Devuelve el movimiento dado por el número numMovimiento. Eleva ```IllegalArgumentException``` si ```numMovimiento``` no está en el intervalo [1, getNumMovimientos()]
 
 #### Tipos auxiliares
--
+
 - TipoVictoria, enumerado. Puede tomar los valores OUTOFTIME, RESIGN, MATE, DRAW.
 - Resultado, enumerado. Puede tomar los valores WHITE, BLACK, DRAW.
 
 ### Factoría - FactoriaPartidas
-DClase de factoría para construir objetos de tipo Partidas.
--- _Partidas leerPartidas(String nomfich)_:Crea un objeto de tipo Partidas a partir de la información recogida en el archivo csv, cuya ruta se da como parámetro.
+Clase de factoría para construir objetos de tipo Partidas.
 
+- _Partidas leerPartidas(String nomfich)_:Crea un objeto de tipo Partidas a partir de la información recogida en el archivo csv, cuya ruta se da como parámetro.
 
 
 ### Tipo Contenedor - Partidas
 
 Clase contenedora de los objetos de tipo Partida.
-D
 
-***Propiedades**:
+**Propiedades**:
 
 -  _partidas_, de tipo _List\<Partida\>_, consultable. Lista de partidas de ajedrez 
 -  _numero partidas_, de tipo _Integer_, consultable. Número de partidas del contenedor. 
-
--
-- 
-***Constructores**: 
+ 
+**Constructores**: 
 
 - C1: Constructor por defecto. Creal un objeto de tipo Partidas sin ninguna partida almacenada.
 - C2: Constructor con un parámetro de tipo Collection\<Partida\>. Crea un objeto de tipo Partidas con las partidas incluidas en la colección dada como parámetro.
-
 - C3: Constructor con un parámetro de tipo Stream\<Partida\>. Crea un objeto de tipo Partidas con las partidas incluidas en el Stream dado 
-*
+
 **Criterio de igualdad**: Dos partidas son iguales si lo son sus propiedades partidas.
 
 
 **Otras operaciones**:
--- _void agregarPartida(Partida p)_: Añade una partida de ajedrez al objeto.
-
+- _void agregarPartida(Partida p)_: Añade una partida de ajedrez al objeto.
 - _Double getPromedioDuracionesMedias(TipoVictoria vic)_: Devuelve la media de la duración media(en segundos) por turno de las partidas. Si la media no se puede calcular, devuelve cero.
 - _Map<String, Double> getPorcentajesSiguienteMovimiento(String movimiento, Integer numeroMovimiento)_: Devuelve un Map en el que las claves son movimientos siguientes al dado como parámetro (según el movimiento y la posición en la que se hace), y los valores el porcentaje de veces que se ha hecho ese movimiento. Por ejemplo,     si el movimiento es "Nc6" y el número de movimiento es el 6, el Map contiene como claves los movimientos hechos en séptimo lugar tras un movimiento "Nc6". Los valores serán el porcentaje de veces que se han hecho esos movimientos. Eleva ```IllegalArgumentException```si numeroMovimiento no es mayor o igual que uno.
 - _Double getPorcentajeVictoriasDeApertura(String apertura, Resultado resultado)_: Devuelve el porcentaje de partidas que incluyen la cadena de apertura en su apertura y cuyo resultado es el dado como parámetro.
